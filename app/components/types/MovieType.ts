@@ -4,10 +4,14 @@ export type MovieConfig = {
   id: number;
   title: string;
   description: string;
-  released_date: number;
+  released_date: string;
   watched: boolean;
 };
 
+export type MovieState = {
+  movies: MovieConfig[];
+  searchQuery: string;
+};
 export type MovieAction =
   | {
       type: 'SEARCH_MOVIE';
@@ -19,6 +23,6 @@ export type MovieAction =
     };
 
 export type MovieContextType = {
-  movie: MovieConfig[];
+  movie: MovieState;
   dispatch: React.Dispatch<MovieAction>;
 };

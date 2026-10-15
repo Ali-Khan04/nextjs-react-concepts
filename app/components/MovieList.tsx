@@ -1,19 +1,28 @@
 'use client';
-import { movieData } from './data/moviesData';
+
 import { useMovies } from './hooks/useMovies';
 
-export default function MoiveList() {
+export default function MovieList() {
   const { movie } = useMovies();
+
+  const filteredMovies = movie.movies.filter((item) =>
+    item.title.toLowerCase().includes(movie.searchQuery.toLowerCase()),
+  );
+
   return (
     <div>
-      {movie.map((movies) => (
-        <div key={movies.id}>
-          <h1>{movies.title}</h1>
-          <h3>{movies.description}</h3>
-          <p>{movies.released_date}</p>
-          <h5>{movies.watched}</h5>
-        </div>
-      ))}
+      {filteredMovies.length > 0 ? (
+        filteredMovies.map((item) => (
+          <div key={item.id}>
+            <h1>{item.title}</h1>
+            <h3>{item.description}</h3>
+            <p>{item.released_date}</p>
+            <h5>{item.watched ? 'Watched' : 'Not watched'}</h5>
+          </div>
+        ))
+      ) : (
+        <p>No movies found.</p>
+      )}
     </div>
   );
 }

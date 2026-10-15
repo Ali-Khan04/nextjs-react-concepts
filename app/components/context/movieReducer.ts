@@ -1,20 +1,21 @@
-import { MovieAction, MovieConfig } from '../types/MovieType';
+import { MovieAction, MovieState } from '../types/MovieType';
 
 export const movieReducer = (
-  state: MovieConfig[],
+  state: MovieState,
   action: MovieAction,
-): MovieConfig[] => {
+): MovieState => {
   switch (action.type) {
     case 'SEARCH_MOVIE':
-      return state.filter((movie) =>
-        movie.title.toLowerCase().includes(action.payload.toLowerCase()),
-      );
+      return { ...state, searchQuery: action.payload };
     case 'TOGGLE_MOVIE':
-      return state.map((movie) =>
-        movie.id === action.payload
-          ? { ...movie, watched: !movie.watched }
-          : movie,
-      );
+      return {
+        ...state,
+        movies: state.movies.map((movie) =>
+          movie.id === action.payload
+            ? { ...movie, watched: !movie.watched }
+            : movie,
+        ),
+      };
     default:
       return state;
   }

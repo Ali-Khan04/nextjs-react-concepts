@@ -1,11 +1,11 @@
 'use client';
 import { useReducer } from 'react';
-import { MovieConfig } from '../types/MovieType';
+import { MovieState } from '../types/MovieType';
 import { movieReducer } from './movieReducer';
 import { movieData } from '../data/moviesData';
 import { MovieContext } from './MovieContext';
 
-const initialState: MovieConfig[] = movieData;
+const initialState: MovieState = { movies: movieData, searchQuery: '' };
 export default function MovieProvider({ children }: React.PropsWithChildren) {
   const [movie, dispatch] = useReducer(movieReducer, initialState);
   return (

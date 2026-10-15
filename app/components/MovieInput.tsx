@@ -15,7 +15,17 @@ export default function MovieInput() {
   const [searchInput, setSearchInput] = useState({ search: '' });
   //const [searched, setSearched] = useState('');
   const handleInputChange = (key: string, userInput: string) => {
-    setSearchInput((prev) => ({ ...prev, [key]: userInput }));
+    setSearchInput((prev) => ({
+      ...prev,
+      [key]: userInput,
+    }));
+
+    if (key === 'search') {
+      dispatch({
+        type: 'SEARCH_MOVIE',
+        payload: userInput,
+      });
+    }
   };
   const handleSubmit = () => {
     dispatch({
