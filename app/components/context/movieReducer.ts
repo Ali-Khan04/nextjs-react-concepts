@@ -16,6 +16,8 @@ export const movieReducer = (
             : movie,
         ),
       };
+    case 'LOAD':
+      return { ...state, movies: action.payload };
     default:
       return state;
   }

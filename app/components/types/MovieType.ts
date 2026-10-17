@@ -20,7 +20,8 @@ export type MovieAction =
   | {
       type: 'TOGGLE_MOVIE';
       payload: number;
-    };
+    }
+  | { type: 'LOAD'; payload: MovieConfig[] };
 
 export type MovieContextType = {
   movie: MovieState;
