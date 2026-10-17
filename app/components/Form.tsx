@@ -1,6 +1,6 @@
 'use client';
 import { FormConfig } from './types/FormType';
-
+import Button from './Button';
 type FormProps = {
   value: Record<string, string>;
   onChange: (key: string, text: string) => void;
@@ -34,7 +34,7 @@ export default function Form({
             />
           </div>
         ))}
-        <button type="submit">Search</button>
+        <Button type="submit">Search</Button>
       </form>
     </div>
   );
