@@ -1,16 +1,21 @@
 'use client';
-
+import { useMemo } from 'react';
 import Button from './Button';
 import { useMovies } from './hooks/useMovies';
-export default function MovieList() {
+export default function MovieList({ darkMode }: { darkMode: boolean }) {
   const { movie, dispatch } = useMovies();
-
-  const filteredMovies = movie.movies.filter((item) =>
-    item.title.toLowerCase().includes(movie.searchQuery.toLowerCase()),
-  );
+  const filteredMovies = useMemo(() => {
+    return movie.movies.filter((item) =>
+      item.title.toLowerCase().includes(movie.searchQuery.toLowerCase()),
+    );
+  }, [movie.movies, movie.searchQuery]);
 
   return (
-    <div>
+    <div
+      className={
+        darkMode ? 'dark bg-gray-900 text-white' : 'bg-white text-black'
+      }
+    >
       {filteredMovies.length > 0 ? (
         filteredMovies.map((item) => (
           <div key={item.id}>

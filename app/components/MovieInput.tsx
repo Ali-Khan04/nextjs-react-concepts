@@ -10,7 +10,7 @@ const fields: FormConfig[] = [
     placeholder: 'Enter Movie Title',
   },
 ];
-export default function MovieInput() {
+export default function MovieInput({ darkMode }: { darkMode: boolean }) {
   const { movie, dispatch } = useMovies();
   const [searchInput, setSearchInput] = useState({ search: '' });
   //const [searched, setSearched] = useState('');
@@ -35,12 +35,18 @@ export default function MovieInput() {
     console.log('Search: ', searchInput.search);
   };
   return (
-    <Form
-      fields={fields}
-      value={searchInput}
-      name="Search"
-      onChange={handleInputChange}
-      onSubmit={handleSubmit}
-    />
+    <div
+      className={
+        darkMode ? 'dark bg-gray-900 text-white' : 'bg-white text-black'
+      }
+    >
+      <Form
+        fields={fields}
+        value={searchInput}
+        name="Search"
+        onChange={handleInputChange}
+        onSubmit={handleSubmit}
+      />
+    </div>
   );
 }
