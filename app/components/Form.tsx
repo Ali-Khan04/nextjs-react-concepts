@@ -7,6 +7,7 @@ type FormProps = {
   name: string;
   fields: FormConfig[];
   onSubmit: (values: Record<string, string>) => void;
+  buttonText: string;
 };
 export default function Form({
   value,
@@ -14,6 +15,7 @@ export default function Form({
   name,
   fields,
   onSubmit,
+  buttonText,
 }: FormProps) {
   const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -34,7 +36,7 @@ export default function Form({
             />
           </div>
         ))}
-        <Button type="submit">Search</Button>
+        <Button type="submit">{buttonText}</Button>
       </form>
     </div>
   );

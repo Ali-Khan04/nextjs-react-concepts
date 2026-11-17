@@ -21,7 +21,15 @@ export type MovieAction =
       type: 'TOGGLE_MOVIE';
       payload: number;
     }
-  | { type: 'LOAD'; payload: MovieConfig[] };
+  | { type: 'LOAD'; payload: MovieConfig[] }
+  | {
+      type: 'DELETE_MOVIE';
+      payload: number;
+    }
+  | {
+      type: 'ADD_MOVIE';
+      payload: MovieConfig;
+    };
 
 export type MovieContextType = {
   movie: MovieState;

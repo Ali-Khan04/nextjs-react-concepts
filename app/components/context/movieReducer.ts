@@ -18,6 +18,16 @@ export const movieReducer = (
       };
     case 'LOAD':
       return { ...state, movies: action.payload };
+    case 'DELETE_MOVIE':
+      return {
+        ...state,
+        movies: state.movies.filter((movie) => movie.id !== action.payload),
+      };
+    case 'ADD_MOVIE':
+      return {
+        ...state,
+        movies: [...state.movies, action.payload],
+      };
     default:
       return state;
   }

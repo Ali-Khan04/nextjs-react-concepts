@@ -29,6 +29,13 @@ export default function MovieList({ darkMode }: { darkMode: boolean }) {
             >
               {item.watched ? 'Watched' : 'Not watched'}
             </Button>
+            <Button
+              onClick={() =>
+                dispatch({ type: 'DELETE_MOVIE', payload: item.id })
+              }
+            >
+              Delete
+            </Button>
           </div>
         ))
       ) : (

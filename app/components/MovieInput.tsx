@@ -46,6 +46,7 @@ export default function MovieInput({ darkMode }: { darkMode: boolean }) {
         name="Search"
         onChange={handleInputChange}
         onSubmit={handleSubmit}
+        buttonText="Search"
       />
     </div>
   );
