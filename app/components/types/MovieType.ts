@@ -29,6 +29,10 @@ export type MovieAction =
   | {
       type: 'ADD_MOVIE';
       payload: MovieConfig;
+    }
+  | {
+      type: 'EDIT_MOVIE';
+      payload: MovieConfig;
     };
 
 export type MovieContextType = {

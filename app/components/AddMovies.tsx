@@ -3,17 +3,7 @@ import { useState } from 'react';
 import Form from './Form';
 import { FormConfig } from './types/FormType';
 import { useMovies } from './hooks/useMovies';
-
-const fields: FormConfig[] = [
-  {
-    key: 'title',
-    placeholder: 'Enter Title of the Movie',
-  },
-  {
-    key: 'description',
-    placeholder: 'Enter Description',
-  },
-];
+import { movieFields } from './movieFields';
 export default function AddMovies() {
   const { dispatch } = useMovies();
   const [userInput, setUserInput] = useState({
@@ -38,7 +28,7 @@ export default function AddMovies() {
   return (
     <div>
       <Form
-        fields={fields}
+        fields={movieFields}
         value={userInput}
         onChange={hanldeUserInput}
         name="userInput"
